@@ -1,0 +1,28 @@
+#{extends 'main.html' /}
+#{set title:'Ajout d\'une organisation' /}
+
+<h1>Ajout d'une organisation</h1>
+<p>* = Requis</p>
+<p class="error">${message}</p>
+<form action="@{Organisations.ajouter()}" method="POST">
+    <label for="nom">Nom*</label><br>
+    <input type="text" id="nom" name="nom" value="${flash.nom}"><br>
+    <label for="dirigeant">Dirigeant*</label>
+    <select id="dirigeantId" name="dirigeantId">
+        #{ list items:civils, as:'civil' }
+            <option value="${civil.id}" %{if (flash.dirigeantId == civil.id) { }% selected %{ } }% >${civil.nom} ${civil.prenom}, ${civil.dateNaissance.format("dd/MM/yyyy")}</option>
+        #{/list}
+    </select>
+    <label for="adresse">Adresse</label><br>
+    <input type="text" id="adresse" name="adresse" value="${flash.addresse}"><br>
+    <label for="codePostal">Code postal</label><br>
+    <input type="text" id="codePostal" name="codePostal" value="${flash.codePostal}"><br>
+    <label for="ville">Ville</label><br>
+    <input type="text" id="ville" name="ville" value="${flash.ville}"><br>
+    <label for="pays">Pays</label><br>
+    <input type="text" id="pays" name="pays" value="${flash.pays}"><br>
+
+    <label for="commentaire">Commentaire</label><br>
+    <input type="text" id="commentaire" name="commentaire" value="${flash.commentaire}"><br>
+    <input type="submit" >
+</form>

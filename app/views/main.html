@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>#{get 'title' /}</title>
+        <meta charset="${_response_encoding}">
+        <link rel="stylesheet" media="screen" href="@{'/public/stylesheets/main.css'}">
+        #{get 'moreStyles' /}
+        <link rel="shortcut icon" type="image/png" href="@{'/public/images/favicon.png'}">
+    </head>
+    <body>
+        <script src="https://kit.fontawesome.com/16cc5b06c5.js" crossorigin="anonymous"></script>
+        <ul id="nav">
+            <li><img id="logo" src="https://weneedfun.com/wp-content/uploads/2016/11/Avengers-Logo-3.png" alt="logo" /></li>
+            <li><a href="/">Accueil</a></li>
+            <li><a href="#">Super-héros</a></li>
+            <li><a href="#">Super-vilains</a></li>
+            <li><a href="@{Civils.liste()}">Civils</a></li>
+            <li><a href="@{Organisations.liste()}">Organisations</a></li>
+        </ul>
+        <div id="page">#{doLayout /}</div>
+        <script src="@{'/public/javascripts/jquery-1.6.4.min.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+        #{get 'moreScripts' /}
+    </body>
+</html>

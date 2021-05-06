@@ -1,0 +1,85 @@
+#{extends 'main.html' /}
+#{set title:'Modification d\'une organisation' /}
+
+<h1>Modification d'une organisation</h1>
+<p>* = Requis</p>
+<p class="error">${message}</p>
+<form action="@{Organisations.editer(organisation.id)}" method="POST">
+    %{
+        if (flash.nom) {
+            valueNom = flash.nom;
+        } else {
+            valueNom = organisation.nom;
+        }
+    }%
+    <label for="nom">Nom*</label><br>
+    <input type="text" id="nom" name="nom" value="${valueNom}"><br>
+    %{
+        if (flash.dirigeantId) {
+            valueDirigeant = flash.dirigeantId;
+        } else {
+            valueDirigeant = organisation.dirigeant.id;
+        }
+    }%
+    <label for="dirigeant">Dirigeant*</label>
+    <select id="dirigeantId" name="dirigeantId">
+        #{ list items:civils, as:'civil' }
+            <option value="${civil.id}" %{if (flash.dirigeantId == valueDirigeant) { }% selected %{ } }% >${civil.nom} ${civil.prenom}, ${civil.dateNaissance.format("dd/MM/yyyy")}</option>
+        #{/list}
+    </select>
+
+    %{
+        if (flash.adresse) {
+            valueAdresse = flash.adresse;
+        } else {
+            valueAdresse = organisation.adresse;
+        }
+    }%
+    <label for="adresse">Adresse</label><br>
+    <input type="text" id="adresse" name="adresse" value="{valueAdresse}"><br>
+    %{
+        if (flash.codePostal) {
+            valueCodePostal = flash.codePostal;
+        } else {
+            valueCodePostal = organisation.codePostal;
+        }
+    }%
+    <label for="codePostal">Code postal</label><br>
+    <input type="text" id="codePostal" name="codePostal" value="${valueCodePostal}"><br>
+    %{
+        if (flash.ville) {
+            valueVille = flash.ville;
+        } else {
+            valueVille = organisation.ville;
+        }
+    }%
+    <label for="ville">Ville</label><br>
+    <input type="text" id="ville" name="ville" value="${valueVille}"><br>
+    %{
+        if (flash.pays) {
+            valuePays = flash.pays;
+        } else {
+            valuePays = organisation.pays;
+        }
+    }%
+    <label for="pays">Pays</label><br>
+    <input type="text" id="pays" name="pays" value="${valuePays}"><br>
+
+    %{
+        if (flash.commentaire) {
+            valueCommentaire = flash.commentaire;
+        } else {
+            valueCommentaire = organisation.commentaire;
+        }
+    }%
+    <label for="commentaire">Commentaire</label><br>
+    <input type="text" id="commentaire" name="commentaire" value="${valueCommentaire}"><br>
+    <input type="submit" >
+</form>
+<p>
+    #{ifErrors}
+        #{errors}
+            ${error}
+        #{/errors}
+    #{/ifErrors}
+</p>

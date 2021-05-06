@@ -1,0 +1,26 @@
+#{extends 'main.html' /}
+#{set title:'Liste des organisations' /}
+
+<h1>Organisations <a href="@{Organisations.formAjout()}"><button type="button" class="btn btn-plus"><i class="fas fa-plus"></i></button></a></h1>
+<table>
+    <tr>
+        <th>Nom</th>
+        <th>Pays</th>
+        <th>Dirigeant</th>
+        <th>Membres</th>
+        <th>Actions</th>
+    </tr>
+    #{ list items:organisations, as:'organisation' }
+        <tr>
+            <td>${organisation.nom}</td>
+            <td>${organisation.pays}</td>
+            <td>${organisation.dirigeant.nom.toUpperCase()} ${organisation.dirigeant.prenom}</td>
+            <td>${organisation.membres.size()}</td>
+            <td>
+                <a href="@{Organisations.details(organisation.id)}"><button type="button" class="btn btn-info"><i class="fas fa-info"></i></button></a>
+                <a href="@{Organisations.formEdit(organisation.id)}"><button type="button" class="btn btn-edit"><i class="fas fa-edit"></i></button></a>
+                <a href="@{Organisations.supprimer(organisation.id)}"><button type="button" class="btn btn-supp"><i class="far fa-trash-alt"></i></button></a>
+            </td>
+        </tr>
+    #{/list}
+</table>

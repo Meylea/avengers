@@ -1,0 +1,34 @@
+#{extends 'main.html' /}
+#{set title: organisation.nom /}
+
+<h1>
+    ${organisation.nom} 
+    <a href="@{Organisations.formEdit(organisation.id)}"><button type="button" class="btn btn-edit"><i class="fas fa-edit"></i></button></a>
+    <a href="@{Organisations.supprimer(organisation.id)}"><button type="button" class="btn btn-supp"><i class="far fa-trash-alt"></i></button></a>
+</h1>
+<p>Ajouté(e) le ${organisation.dateAjout.format("dd/MM/yyyy")}, dernière modification le ${organisation.dateModif.format("dd/MM/yyyy")}</p>
+<p>Impliqué(e) dans ${organisation.nbIncidents} incident(s) et ${organisation.nbMissions} mission(s)</p>
+
+<ul>
+    <li><b>Dirigeant :</b> <a href="@{Civils.details(organisation.dirigeant.id)}">${organisation.dirigeant.nom.toUpperCase()} ${organisation.dirigeant.prenom}</a></li>
+    <li><b>Siège social :</b> <br>${organisation.adresse}<br>${organisation.codePostal} ${organisation.ville}<br>${organisation.pays}</li>
+    <li><b>Commentaire :</b> ${organisation.commentaire}</li>
+    <p class=error>${message}</p>
+    <li><b>Membres :</b> <ul>
+            #{ list items:organisation.membres, as:'membre' }
+                <li>
+                    <a href="@{Civils.details(membre.id)}">${membre.nom.toUpperCase()} ${membre.prenom}</a> 
+                    <a href="@{Organisations.retirerMembre(organisation.id, membre.id)}"><button type="button" class="btn btn-supp"><i class="far fa-trash-alt"></i></button></a>
+                </li>
+            #{/list}
+        </ul></li>
+</ul>
+<h2>Ajouter un membre</h2>
+<form action="@{Organisations.ajouterMembre(organisation.id)}" method="POST">
+    <select id="civilId" name="civilId">
+        #{ list items:civils, as:'civil' }
+            <option value="${civil.id}" >${civil.nom} ${civil.prenom}, ${civil.dateNaissance.format("dd/MM/yyyy")}</option>
+        #{/list}
+    </select>
+    <input type="submit"/>
+</form>

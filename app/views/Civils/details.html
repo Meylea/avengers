@@ -1,0 +1,29 @@
+#{extends 'main.html' /}
+#{set title: civil.nom.toUpperCase() + " " + civil.prenom /}
+
+<h1>
+    ${civil.civilite} ${civil.nom.toUpperCase()} ${civil.prenom}
+    <a href="@{Civils.formEdit(civil.id)}"><button type="button" class="btn btn-edit"><i class="fas fa-edit"></i></button></a>
+    <a href="@{Civils.supprimer(civil.id)}"><button type="button" class="btn btn-supp"><i class="far fa-trash-alt"></i></button></a>
+</h1>
+<p>Ajouté(e) le ${civil.dateAjout.format("dd/MM/yyyy")}, dernière modification le ${civil.dateModif.format("dd/MM/yyyy")}</p>
+<p>Impliqué(e) dans ${civil.nbIncidents} incident(s) et ${civil.nbMissions} mission(s)</p>
+
+<ul>
+    <li><b>Date de naissance :</b> ${civil.dateNaissance.format("dd/MM/yyyy")}</li>
+    <li><b>Nationalité :</b> ${civil.nationalite}</li>
+    <li><b>E-mail :</b> ${civil.email}</li>
+    <li><b>Téléphone :</b> ${civil.telephone}</li>
+    <li><b>Adresse :</b> <br>${civil.adresse}<br>${civil.codePostal} ${civil.ville}<br>${civil.pays}</li>
+    <li><b>Commentaire :</b> ${civil.commentaire}</li>
+    <li><b>Dirige :</b><ul>
+            #{ list items:civil.organisationsDirigees, as:'organisation' }
+                <li><a href="@{Organisations.details(organisation.id)}">${organisation.nom}</a></li>
+            #{/list}
+        </ul></li>
+    <li><b>Membre de :</b> <ul>
+            #{ list items:civil.organisations, as:'organisation' }
+                <li><a href="@{Organisations.details(organisation.id)}">${organisation.nom}</a></li>
+            #{/list}
+        </ul></li>
+</ul>

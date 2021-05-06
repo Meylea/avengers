@@ -1,0 +1,166 @@
+/* Layout */
+
+body {
+    margin: 0;
+    background-color: rgb(207, 203, 203);
+    color: black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#nav {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+    width: 100%;
+    
+  }
+  
+#nav li {
+    float: left;
+}
+  
+#nav li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+  
+#nav li a:hover {
+    background-color: #111;
+}
+
+#logo {
+    height: 50px;
+    width: 50px;
+}
+
+#page {
+    width: 80%;
+}
+
+.error {
+    color: red;
+}
+
+/* Listes */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    height: 30px;
+    border-bottom: 1px solid rgb(173, 173, 173);
+    text-align: left;
+}
+
+/* Boutons */
+
+.btn {
+    -webkit-border-radius: 10;
+    -moz-border-radius: 10;
+    border-radius: 10px;
+    padding: 10px;
+    border: none;
+    margin: 2px;
+    width: 35px;
+}
+
+.btn-plus {
+    background: #03d333;
+    background-image: -webkit-linear-gradient(top, #03d333, #0abf00);
+    background-image: -moz-linear-gradient(top, #03d333, #0abf00);
+    background-image: -ms-linear-gradient(top, #03d333, #0abf00);
+    background-image: -o-linear-gradient(top, #03d333, #0abf00);
+    background-image: linear-gradient(to bottom, #03d333, #0abf00);
+}
+
+.btn-info {
+    background: #0088ff;
+    background-image: -webkit-linear-gradient(top, #0088ff, #0087cf);
+    background-image: -moz-linear-gradient(top, #0088ff, #0087cf);
+    background-image: -ms-linear-gradient(top, #0088ff, #0087cf);
+    background-image: -o-linear-gradient(top, #0088ff, #0087cf);
+    background-image: linear-gradient(to bottom, #0088ff, #0087cf);
+}
+
+.btn-edit {
+    background: #ffcd45;
+    background-image: -webkit-linear-gradient(top, #ffcd45, #e8a600);
+    background-image: -moz-linear-gradient(top, #ffcd45, #e8a600);
+    background-image: -ms-linear-gradient(top, #ffcd45, #e8a600);
+    background-image: -o-linear-gradient(top, #ffcd45, #e8a600);
+    background-image: linear-gradient(to bottom, #ffcd45, #e8a600);
+}
+
+.btn-supp {
+    background: #ff0000;
+    background-image: -webkit-linear-gradient(top, #ff0000, #940d0d);
+    background-image: -moz-linear-gradient(top, #ff0000, #940d0d);
+    background-image: -ms-linear-gradient(top, #ff0000, #940d0d);
+    background-image: -o-linear-gradient(top, #ff0000, #940d0d);
+    background-image: linear-gradient(to bottom, #ff0000, #940d0d);
+}
+
+.fas, .far {
+    color: black;
+}
+
+/* Formulaires */
+
+input[type=text], input[type=date], input[type=email] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+}
+
+select {
+    width: 100%;
+    padding: 12px 20px;
+    border-radius: 4px;
+    background-color: #f1f1f1;
+    margin: 8px 0;
+  }
+
+/* Page d'accueil */
+
+#team-img {
+    width: 100%;
+    z-index: auto;
+}
+
+#bouton-alerte {
+    position: absolute;
+    top: 10%;
+    right: 15%;
+    background: #ff0000;
+    background-image: -webkit-linear-gradient(top, #ff0000, #940d0d);
+    background-image: -moz-linear-gradient(top, #ff0000, #940d0d);
+    background-image: -ms-linear-gradient(top, #ff0000, #940d0d);
+    background-image: -o-linear-gradient(top, #ff0000, #940d0d);
+    background-image: linear-gradient(to bottom, #ff0000, #940d0d);
+    -webkit-border-radius: 10;
+    -moz-border-radius: 10;
+    border-radius: 10px;
+    -webkit-box-shadow: 0px 1px 3px #666666;
+    -moz-box-shadow: 0px 1px 3px #666666;
+    box-shadow: 0px 1px 3px #666666;
+    font-family: Arial;
+    color: #ffffff;
+    font-size: 25px;
+    padding: 10px 20px 10px 20px;
+    text-decoration: none;
+}
+
+#bouton-alerte:hover {
+    background: #ff0000;
+
+  }

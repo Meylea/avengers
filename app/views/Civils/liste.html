@@ -1,0 +1,35 @@
+#{extends 'main.html' /}
+#{set title:'Liste des civils' /}
+
+<h1>Civils <a href="@{Civils.formAjout()}"><button type="button" class="btn btn-plus"><i class="fas fa-plus"></i></button></a></h1>
+<table>
+    <tr>
+        <th>Civilité</th>
+        <th>Nom</th>
+        <th>Prénom</th>
+        <th>Date de naissance</th>
+        <th>Pays</th>
+        <th>Nationalité</th>
+        <th>Actions</th>
+    </tr>
+    #{ list items:civils, as:'civil' }
+        <tr>
+            <td>${civil.civilite}</td>
+            <td>${civil.nom}</td>
+            <td>${civil.prenom}</td>
+            %{
+                if (civil.dateNaissance) { 
+                    dateNaissance = civil.dateNaissance.format("dd/MM/yyyy");
+                }
+            }%
+            <td>${dateNaissance}</td>
+            <td>${civil.pays}</td>
+            <td>${civil.nationalite}</td>
+            <td>
+                <a href="@{Civils.details(civil.id)}"><button type="button" class="btn btn-info"><i class="fas fa-info"></i></button></a>
+                <a href="@{Civils.formEdit(civil.id)}"><button type="button" class="btn btn-edit"><i class="fas fa-edit"></i></button></a>
+                <a href="@{Civils.supprimer(civil.id)}"><button type="button" class="btn btn-supp"><i class="far fa-trash-alt"></i></button></a>
+            </td>
+        </tr>
+    #{/list}
+</table>
