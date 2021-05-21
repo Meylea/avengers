@@ -31,10 +31,12 @@
     <label for="prenom">Prénom*</label><br>
     <input type="text" id="prenom" name="prenom" value="${valuePrenom}"><br>
     %{
+            
         if (flash.dateNaissance) {
             valueDateNaissance = flash.dateNaissance;
         } else {
-            valueDateNaissance = civil.dateNaissance;
+            dateNaissance = civil.dateNaissance.format("yyyy-MM-dd");
+            valueDateNaissance = dateNaissance;
         }
     }%
     <label for="dateNaissance">Date de naissance*</label><br>
